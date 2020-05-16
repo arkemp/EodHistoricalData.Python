@@ -88,7 +88,7 @@ def get_exchange_symbols(exchange_code,
     }
     r = session.get(url, params=params)
     if r.status_code == requests.codes.ok:
-        df = pd.read_csv(StringIO(r.text), skipfooter=1, index_col=0)
+        df = pd.read_csv(StringIO(r.text), skipfooter=1, index_col=0, engine='python')
         return df
     else:
         params["api_token"] = "YOUR_HIDDEN_API"
